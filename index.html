@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ITC Project Showcase</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <style>
+    /* General Styling */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #1a1a2e; /* Dark background */
+      color: #ffffff; /* White text color */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding-bottom: 50px;
+    }
+
+    h1, h2, h3 {
+      color: #ffffff;
+    }
+
+    .intro-screen {
+      text-align: center;
+      margin-top: 50px;
+      padding: 20px;
+    }
+
+    .intro-screen h2 {
+      font-size: 2.5rem;
+      color: #00adb5; /* Highlighted color */
+    }
+
+    .intro-screen h3 {
+      font-size: 2rem; /* Slightly increased size */
+      color: #dcdcdc; /* Retain the original color */
+      font-weight: bold; /* Make it bold */
+      margin-bottom: 30px;
+    }
+
+    .intro-screen p {
+      font-size: 1.2rem;
+      margin: 20px 0;
+      color: #dcdcdc;
+    }
+
+    .enter-button {
+      padding: 10px 20px;
+      background: #00adb5;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+      margin: 20px auto;
+      display: block;
+    }
+
+    .enter-button:hover {
+      background: #007d82;
+    }
+
+    .project-promo {
+      display: none;
+      text-align: center;
+      margin: 40px 0;
+      color: #dcdcdc;
+    }
+
+    .project-promo h3 {
+      font-size: 2rem;
+      color: #00adb5;
+    }
+
+    .feature-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 20px;
+      width: 90%;
+      max-width: 1200px;
+      margin-top: 20px;
+    }
+
+    .feature-card {
+      background: #2c2f4e; /* Darker card background */
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      cursor: pointer;
+    }
+
+    .feature-card img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 10px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #00adb5;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      background: #3e4a73; /* Lighter background on hover */
+    }
+
+    .feature-details {
+      display: none;
+      padding: 20px;
+      background: #2c2f4e;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      width: 90%;
+      max-width: 1200px;
+      margin: 10px auto;
+      text-align: center;
+    }
+
+    .feature-details h2 {
+      color: #00adb5;
+    }
+
+    .feature-details p {
+      color: #dcdcdc;
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+
+    .back-button {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+      background: #00adb5;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    .back-button:hover {
+      background: #007d82;
+    }
+  </style>
+</head>
+<body>
+  <!-- Intro Screen -->
+  <div id="introScreen" class="intro-screen">
+    <h2>Welcome to My ITC Project Showcase!</h2>
+    <h3>Hae Yeong Park</h3>
+    <p>Explore my collection of HTML projects that showcase my skills, creativity, and dedication to coding. Each project represents a step in my journey to becoming a proficient developer. Take a look and discover the innovative and functional creations I’ve built!</p>
+    <button class="enter-button" onclick="showMainContent()">Enter Showcase</button>
+  </div>
+
+  <!-- Main Content -->
+  <div id="mainContent" style="display: none;">
+    <!-- Projects Promo -->
+    <div class="project-promo">
+      <h3>Check Out My Projects Below!</h3>
+    </div>
+
+    <!-- Feature Container -->
+    <div id="featureContainer" class="feature-container">
+      <div class="feature-card" onclick="showFeature('conversion')">
+        <img src="https://img.icons8.com/ios/50/convert.png" alt="Conversion Icon">
+        <h3>Unit Conversions</h3>
+      </div>
+      <div class="feature-card" onclick="showFeature('factorial')">
+        <img src="https://img.icons8.com/ios/50/calculator.png" alt="Factorial Icon">
+        <h3>Factorial Calculator</h3>
+      </div>
+      <div class="feature-card" onclick="showFeature('sumAverage')">
+        <img src="https://img.icons8.com/ios/50/average.png" alt="Sum and Average Icon">
+        <h3>Sum & Average</h3>
+      </div>
+      <div class="feature-card" onclick="showFeature('incomeTax')">
+        <img src="https://img.icons8.com/ios/50/tax.png" alt="Income Tax Icon">
+        <h3>Income Tax</h3>
+      </div>
+      <div class="feature-card" onclick="showFeature('payroll')">
+        <img src="https://img.icons8.com/ios/50/payroll.png" alt="Payroll Icon">
+        <h3>Payroll Manager</h3>
+      </div>
+    </div>
+
+    <!-- Content Sections for Each Feature -->
+    <div id="conversion" class="feature-details">
+      <button class="back-button" onclick="goBack()">← Back</button>
+      <h2>Unit Conversions</h2>
+      <h3>Choose Conversion Type</h3>
+    <select id="conversionType" class="w3-select">
+      <option value="CtoF">Celsius to Fahrenheit</option>
+      <option value="FtoC">Fahrenheit to Celsius</option>
+      <option value="MtoF">Meters to Feet</option>
+      <option value="FtoM">Feet to Meters</option>
+    </select>
+    <input type="number" id="conversionInput" class="w3-input w3-margin-top" placeholder="Enter Value">
+    <button class="w3-button w3-block" onclick="performConversion()">Convert</button>
+    <div id="conversionResult" class="w3-margin-top"></div>
+  </div>
+
+    <div id="factorial" class="feature-details">
+      <button class="back-button" onclick="goBack()">← Back</button>
+      <h2>Factorial Calculator</h2>
+      <h3>Find Factorial</h3>
+    <input type="number" id="factorialInput" class="w3-input" placeholder="Enter Number">
+    <button class="w3-button w3-block" onclick="calculateFactorial()">Calculate</button>
+    <div id="factorialResult" class="w3-margin-top"></div>
+  </div>
+
+    <div id="sumAverage" class="feature-details">
+      <button class="back-button" onclick="goBack()">← Back</button>
+      <h2>Sum and Average Calculator</h2>
+      <h3>Enter Numbers (comma-separated)</h3>
+    <input type="text" id="sumAverageInput" class="w3-input">
+    <button class="w3-button w3-block" onclick="calculateSumAverage()">Calculate</button>
+    <div id="sumAverageResult" class="w3-margin-top"></div>
+  </div>
+
+    <div id="incomeTax" class="feature-details">
+      <button class="back-button" onclick="goBack()">← Back</button>
+      <h2>Income Tax Calculator</h2>
+      <h3>Enter Income</h3>
+    <input type="number" id="incomeTaxInput" class="w3-input">
+    <button class="w3-button w3-block" onclick="calculateIncomeTax()">Calculate</button>
+    <div id="incomeTaxResult" class="w3-margin-top"></div>
+  </div>
+
+
+    <div id="payroll" class="feature-details">
+      <button class="back-button" onclick="goBack()">← Back</button>
+      <h2>Payroll Manager</h2>
+      <div class="feature-category">Payroll Calculator</div>
+    <div class="feature-card">
+      <h3>Manage Payroll</h3>
+      <input type="text" id="employeeName" class="w3-input" placeholder="Employee Name">
+      <input type="number" id="daysWorked" class="w3-input w3-margin-top" placeholder="Days Worked">
+      <input type="number" id="dailyRate" class="w3-input w3-margin-top" placeholder="Daily Rate">
+      <input type="number" id="deductionAmount" class="w3-input w3-margin-top" placeholder="Deduction Amount">
+      <button class="w3-button w3-teal w3-block w3-margin-top" onclick="addEmployee()">Add Employee</button>
+      <table class="w3-table w3-striped w3-bordered w3-margin-top">
+        <thead>
+          <tr class="w3-light-grey">
+            <th>No.</th>
+            <th>Name</th>
+            <th>Days Worked</th>
+            <th>Daily Rate</th>
+            <th>Gross Pay</th>
+            <th>Deduction</th>
+            <th>Net Pay</th>
+          </tr>
+        </thead>
+        <tbody id="payrollTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+  <script>
+    function showMainContent() {
+      document.getElementById('introScreen').style.display = 'none';
+      document.getElementById('mainContent').style.display = 'block';
+      document.querySelector('.project-promo').style.display = 'block';
+    }
+
+    function showFeature(feature) {
+      document.getElementById('featureContainer').style.display = 'none';
+      document.querySelectorAll('.feature-details').forEach(section => {
+        section.style.display = 'none';
+      });
+      document.getElementById(feature).style.display = 'block';
+    }
+
+    function goBack() {
+      document.querySelectorAll('.feature-details').forEach(section => {
+        section.style.display = 'none';
+      });
+      document.getElementById('featureContainer').style.display = 'grid';
+    }
+ // Placeholder functions for feature calculators (to be filled in)
+     function performConversion() {
+      const conversionType = document.getElementById('conversionType').value;
+      const input = parseFloat(document.getElementById('conversionInput').value);
+      let result;
+
+      if (isNaN(input)) {
+        alert('Please enter a valid number');
+        return;
+      }
+
+      switch (conversionType) {
+        case 'CtoF':
+          result = (input * 9/5) + 32;
+          document.getElementById('conversionResult').innerText = `${input} °C = ${result.toFixed(2)} °F`;
+          break;
+        case 'FtoC':
+          result = (input - 32) * 5/9;
+          document.getElementById('conversionResult').innerText = `${input} °F = ${result.toFixed(2)} °C`;
+          break;
+        case 'MtoF':
+          result = input * 3.28084;
+          document.getElementById('conversionResult').innerText = `${input} m = ${result.toFixed(2)} ft`;
+          break;
+        case 'FtoM':
+          result = input / 3.28084;
+          document.getElementById('conversionResult').innerText = `${input} ft = ${result.toFixed(2)} m`;
+          break;
+        default:
+          document.getElementById('conversionResult').innerText = '';
+      }
+    }
+
+    function findFactorial() {
+      const num = parseInt(document.getElementById('factorialInput').value);
+      if (isNaN(num) || num < 0) {
+        alert('Please enter a non-negative integer');
+        return;
+      }
+
+      let factorial = 1;
+      for (let i = 1; i <= num; i++) {
+        factorial *= i;
+      }
+      document.getElementById('factorialResult').innerText = `Factorial of ${num} is ${factorial}`;
+    }
+
+    function calculateSumAndAverage() {
+      const n = parseInt(document.getElementById('sumAverageInput').value);
+      if (isNaN(n) || n <= 0) {
+        alert('Please enter a positive integer');
+        return;
+      }
+
+      let sum = 0;
+      for (let i = 1; i <= n; i++) {
+        sum += i;
+      }
+      const average = sum / n;
+      document.getElementById('sumAverageResult').innerText = `Sum: ${sum}, Average: ${average.toFixed(2)}`;
+    }
+
+    function calculateIncomeTax() {
+      const income = parseFloat(document.getElementById('incomeInput').value);
+      if (isNaN(income) || income < 0) {
+        alert('Please enter a valid income');
+        return;
+      }
+
+      let tax = 0;
+      if (income <= 250000) {
+        tax = 0;
+      } else if (income <= 400000) {
+        tax = 0.2 * (income - 250000);
+      } else if (income <= 800000) {
+        tax = 30000 + 0.25 * (income - 400000);
+      } else if (income <= 2000000) {
+        tax = 130000 + 0.3 * (income - 800000);
+      } else {
+        tax = 490000 + 0.32 * (income - 2000000);
+      }
+      document.getElementById('incomeTaxResult').innerText = `Income Tax: PHP ${tax.toFixed(2)}`;
+    }
+
+    function addEmployee() {
+  const name = document.getElementById('employeeName').value.trim();
+  const daysWorked = parseInt(document.getElementById('daysWorked').value);
+  const dailyRate = parseFloat(document.getElementById('dailyRate').value);
+  const deductionAmount = parseFloat(document.getElementById('deductionAmount').value);
+
+  if (!name || isNaN(daysWorked) || isNaN(dailyRate) || isNaN(deductionAmount) || daysWorked <= 0 || dailyRate <= 0) {
+    alert('Please fill out all fields with valid values');
+    return;
+  }
+
+  // Calculate payroll details
+  const grossPay = daysWorked * dailyRate;
+  const netPay = grossPay - deductionAmount;
+
+  // Create a new row for the table
+  const tableBody = document.getElementById('payrollTableBody');
+  const rowCount = tableBody.rows.length + 1;
+  const row = tableBody.insertRow();
+
+  // Insert cells for each detail
+  row.insertCell(0).innerText = rowCount; // No.
+  row.insertCell(1).innerText = name; // Name
+  row.insertCell(2).innerText = daysWorked; // Days Worked
+  row.insertCell(3).innerText = dailyRate.toFixed(2); // Daily Rate
+  row.insertCell(4).innerText = grossPay.toFixed(2); // Gross Pay
+  row.insertCell(5).innerText = deductionAmount.toFixed(2); // Deduction
+  row.insertCell(6).innerText = netPay.toFixed(2); // Net Pay
+
+  // Add a "Remove" button to the row
+  const removeCell = row.insertCell(7);
+  const removeButton = document.createElement('button');
+  removeButton.textContent = 'Remove';
+  removeButton.classList.add('w3-button', 'w3-red');
+  removeButton.onclick = function() {
+    tableBody.deleteRow(row.rowIndex - 1);
+    updateRowNumbers();
+  };
+  removeCell.appendChild(removeButton);
+
+  // Clear input fields after adding employee
+  document.getElementById('employeeName').value = '';
+  document.getElementById('daysWorked').value = '';
+  document.getElementById('dailyRate').value = '';
+  document.getElementById('deductionAmount').value = '';
+}
+
+// Function to update row numbers after removal
+function updateRowNumbers() {
+  const tableBody = document.getElementById('payrollTableBody');
+  for (let i = 0; i < tableBody.rows.length; i++) {
+    tableBody.rows[i].cells[0].innerText = i + 1; // Update "No." column
+  }
+}
+
+  </script>
+</body>
+</html>
