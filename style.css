@@ -1,0 +1,147 @@
+/* General Styling */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #1a1a2e; /* Dark background */
+  color: #ffffff; /* White text color */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding-bottom: 50px;
+}
+
+h1, h2, h3 {
+  color: #ffffff;
+}
+
+.intro-screen {
+  text-align: center;
+  margin-top: 50px;
+  padding: 20px;
+}
+
+.intro-screen h2 {
+  font-size: 2.5rem;
+  color: #00adb5; /* Highlighted color */
+}
+
+.intro-screen h3 {
+  font-size: 2rem;
+  color: #dcdcdc;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.intro-screen p {
+  font-size: 1.2rem;
+  margin: 20px 0;
+  color: #dcdcdc;
+}
+
+.enter-button {
+  padding: 10px 20px;
+  background: #00adb5;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+  margin: 20px auto;
+  display: block;
+}
+
+.enter-button:hover {
+  background: #007d82;
+}
+
+.project-promo {
+  display: none;
+  text-align: center;
+  margin: 40px 0;
+  color: #dcdcdc;
+}
+
+.project-promo h3 {
+  font-size: 2rem;
+  color: #00adb5;
+}
+
+.feature-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 20px;
+  width: 90%;
+  max-width: 1200px;
+  margin-top: 20px;
+}
+
+.feature-card {
+  background: #2c2f4e; /* Darker card background */
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  cursor: pointer;
+}
+
+.feature-card img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+.feature-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #00adb5;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  background: #3e4a73; /* Lighter background on hover */
+}
+
+.feature-details {
+  display: none;
+  padding: 20px;
+  background: #2c2f4e;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 1200px;
+  margin: 10px auto;
+  text-align: center;
+}
+
+.feature-details h2 {
+  color: #00adb5;
+}
+
+.feature-details p {
+  color: #dcdcdc;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.back-button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background: #00adb5;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.back-button:hover {
+  background: #007d82;
+}
