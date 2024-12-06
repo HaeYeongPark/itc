@@ -175,8 +175,8 @@
     <!-- Feature Container -->
     <div id="featureContainer" class="feature-container">
       <div class="feature-card" onclick="showFeature('conversion')">
-        <img src="https://img.icons8.com/ios/50/convert.png" alt="Conversion Icon">
-        <h3>Unit Conversions</h3>
+      <img src="https://img.icons8.com/color/50/conversion.png" alt="Conversion Icon">
+      <h3>Unit Conversions</h3>
       </div>
       <div class="feature-card" onclick="showFeature('factorial')">
         <img src="https://img.icons8.com/ios/50/calculator.png" alt="Factorial Icon">
@@ -225,8 +225,8 @@
       <button class="back-button" onclick="goBack()">← Back</button>
       <h2>Sum and Average Calculator</h2>
       <h3>Enter Numbers (comma-separated)</h3>
-    <input type="text" id="sumAverageInput" class="w3-input">
-    <button class="w3-button w3-block" onclick="calculateSumAverage()">Calculate</button>
+     <input type="text" id="sumAverageInput" class="w3-input" placeholder="Enter numbers separated by commas (e.g., 1,2,3)">
+    <button class="w3-button w3-block" onclick="calculateSumAndAverage()">Calculate</button>
     <div id="sumAverageResult" class="w3-margin-top"></div>
   </div>
 
@@ -323,56 +323,56 @@
       }
     }
 
-    function findFactorial() {
+     // Factorial function
+    function calculateFactorial() {
       const num = parseInt(document.getElementById('factorialInput').value);
       if (isNaN(num) || num < 0) {
-        alert('Please enter a non-negative integer');
+        alert('Please enter a valid non-negative integer.');
         return;
       }
 
-      let factorial = 1;
-      for (let i = 1; i <= num; i++) {
-        factorial *= i;
+      let result = 1;
+      for (let i = 2; i <= num; i++) {
+        result *= i;
       }
-      document.getElementById('factorialResult').innerText = `Factorial of ${num} is ${factorial}`;
+
+      document.getElementById('factorialResult').innerText = `Factorial: ${result}`;
     }
 
+    // Sum and average function
     function calculateSumAndAverage() {
-      const n = parseInt(document.getElementById('sumAverageInput').value);
-      if (isNaN(n) || n <= 0) {
-        alert('Please enter a positive integer');
+      const input = document.getElementById('sumAverageInput').value;
+      const numbers = input.split(',').map(Number);
+      if (numbers.some(isNaN)) {
+        alert('Please enter valid numbers separated by commas.');
         return;
       }
 
-      let sum = 0;
-      for (let i = 1; i <= n; i++) {
-        sum += i;
-      }
-      const average = sum / n;
+      const sum = numbers.reduce((acc, num) => acc + num, 0);
+      const average = sum / numbers.length;
+
       document.getElementById('sumAverageResult').innerText = `Sum: ${sum}, Average: ${average.toFixed(2)}`;
     }
 
+    // Income tax calculator
     function calculateIncomeTax() {
-      const income = parseFloat(document.getElementById('incomeInput').value);
+      const income = parseFloat(document.getElementById('incomeTaxInput').value);
       if (isNaN(income) || income < 0) {
-        alert('Please enter a valid income');
+        alert('Please enter a valid income.');
         return;
       }
 
-      let tax = 0;
-      if (income <= 250000) {
-        tax = 0;
-      } else if (income <= 400000) {
-        tax = 0.2 * (income - 250000);
-      } else if (income <= 800000) {
-        tax = 30000 + 0.25 * (income - 400000);
-      } else if (income <= 2000000) {
-        tax = 130000 + 0.3 * (income - 800000);
+      let tax;
+      if (income <= 10000) {
+        tax = income * 0.1;
+      } else if (income <= 20000) {
+        tax = 1000 + (income - 10000) * 0.2;
       } else {
-        tax = 490000 + 0.32 * (income - 2000000);
+        tax = 3000 + (income - 20000) * 0.3;
       }
-      document.getElementById('incomeTaxResult').innerText = `Income Tax: PHP ${tax.toFixed(2)}`;
-    }
+
+        document.getElementById('incomeTaxResult').innerText = `Tax: ₱${tax.toFixed(2)}`;
+}
 
     function addEmployee() {
   const name = document.getElementById('employeeName').value.trim();
