@@ -182,17 +182,14 @@
         <img src="https://img.icons8.com/ios/50/calculator.png" alt="Factorial Icon">
         <h3>Factorial Calculator</h3>
       </div>
-      <div class="feature-card" onclick="showFeature('sumAverage')">
-        <img src="https://img.icons8.com/ios/50/average.png" alt="Sum and Average Icon">
-        <h3>Sum & Average</h3>
-      </div>
+      
       <div class="feature-card" onclick="showFeature('incomeTax')">
         <img src="https://img.icons8.com/ios/50/tax.png" alt="Income Tax Icon">
         <h3>Income Tax</h3>
       </div>
       <div class="feature-card" onclick="showFeature('payroll')">
         <img src="https://img.icons8.com/ios/50/payroll.png" alt="Payroll Icon">
-        <h3>Payroll Manager</h3>
+        <h3>Simple Payroll </h3>
       </div>
     </div>
 
@@ -212,23 +209,19 @@
     <div id="conversionResult" class="w3-margin-top"></div>
   </div>
 
-    <div id="factorial" class="feature-details">
-      <button class="back-button" onclick="goBack()">← Back</button>
-      <h2>Factorial Calculator</h2>
-      <h3>Find Factorial</h3>
-    <input type="number" id="factorialInput" class="w3-input" placeholder="Enter Number">
-    <button class="w3-button w3-block" onclick="calculateFactorial()">Calculate</button>
-    <div id="factorialResult" class="w3-margin-top"></div>
-  </div>
+  <div id="factorial" class="feature-details">
+  <button class="back-button" onclick="goBack()">← Back</button>
+  <h2>Calculator</h2>
+  <h3>Choose Calculator</h3>
+  <select id="calculatorType" class="w3-select">
+    <option value="factorial">Factorial Calculator</option>
+    <option value="sumAverage">Sum and Average Calculator</option>
+  </select>
+  <input type="text" id="calculatorInput" class="w3-input w3-margin-top" placeholder="Enter Number (comma separated for Sum/Average)">
+  <button class="w3-button w3-block w3-teal w3-margin-top" onclick="performCalculation()">Calculate</button>
+  <div id="calculatorResult" class="w3-margin-top"></div>
+</div>
 
-    <div id="sumAverage" class="feature-details">
-      <button class="back-button" onclick="goBack()">← Back</button>
-      <h2>Sum and Average Calculator</h2>
-      <h3>Enter Numbers (comma-separated)</h3>
-     <input type="text" id="sumAverageInput" class="w3-input" placeholder="Enter numbers separated by commas (e.g., 1,2,3)">
-    <button class="w3-button w3-block" onclick="calculateSumAndAverage()">Calculate</button>
-    <div id="sumAverageResult" class="w3-margin-top"></div>
-  </div>
 
     <div id="incomeTax" class="feature-details">
       <button class="back-button" onclick="goBack()">← Back</button>
@@ -240,34 +233,35 @@
   </div>
 
 
-    <div id="payroll" class="feature-details">
-      <button class="back-button" onclick="goBack()">← Back</button>
-      <h2>Payroll Manager</h2>
-      <div class="feature-category">Payroll Calculator</div>
-    <div class="feature-card">
-      <h3>Manage Payroll</h3>
-      <input type="text" id="employeeName" class="w3-input" placeholder="Employee Name">
-      <input type="number" id="daysWorked" class="w3-input w3-margin-top" placeholder="Days Worked">
-      <input type="number" id="dailyRate" class="w3-input w3-margin-top" placeholder="Daily Rate">
-      <input type="number" id="deductionAmount" class="w3-input w3-margin-top" placeholder="Deduction Amount">
-      <button class="w3-button w3-teal w3-block w3-margin-top" onclick="addEmployee()">Add Employee</button>
-      <table class="w3-table w3-striped w3-bordered w3-margin-top">
-        <thead>
-          <tr class="w3-light-grey">
-            <th>No.</th>
-            <th>Name</th>
-            <th>Days Worked</th>
-            <th>Daily Rate</th>
-            <th>Gross Pay</th>
-            <th>Deduction</th>
-            <th>Net Pay</th>
-          </tr>
-        </thead>
-        <tbody id="payrollTableBody"></tbody>
-      </table>
-    </div>
+   <div id="payroll" class="feature-details">
+  <button class="back-button" onclick="goBack()">← Back</button>
+  <h2>Simple Payroll</h2>
+  <div class="feature-category">Payroll Calculator</div>
+  <div class="feature-card">
+    <h3>Manage Payroll</h3>
+    <input type="text" id="employeeName" class="w3-input" placeholder="Employee Name">
+    <input type="number" id="daysWorked" class="w3-input w3-margin-top" placeholder="Days Worked">
+    <input type="number" id="dailyRate" class="w3-input w3-margin-top" placeholder="Daily Rate">
+    <input type="number" id="deductionAmount" class="w3-input w3-margin-top" placeholder="Deduction Amount">
+    <button class="w3-button w3-teal w3-block w3-margin-top" onclick="addEmployee()">Add Employee</button>
+    <table class="w3-table w3-striped w3-bordered w3-margin-top">
+      <thead>
+        <tr class="w3-light-grey">
+          <th>No.</th>
+          <th>Name</th>
+          <th>Days Worked</th>
+          <th>Daily Rate</th>
+          <th>Gross Pay</th>
+          <th>Deduction</th>
+          <th>Net Pay</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="payrollTableBody"></tbody>
+    </table>
   </div>
 </div>
+
 
   <script>
     function showMainContent() {
@@ -323,37 +317,66 @@
       }
     }
 
-     // Factorial function
-    function calculateFactorial() {
-      const num = parseInt(document.getElementById('factorialInput').value);
-      if (isNaN(num) || num < 0) {
-        alert('Please enter a valid non-negative integer.');
-        return;
-      }
+    // Function to go back to the previous page
+ function goBack() {
+      document.querySelectorAll('.content-section').forEach(function(section) {
+        section.style.display = 'none';
+      });
+      document.getElementById('featureContainer').style.display = 'grid';
+    }
+    
+// Function to go back to the previous page
+function goBack() {
+  window.history.back();
+}
 
-      let result = 1;
-      for (let i = 2; i <= num; i++) {
-        result *= i;
-      }
+function performCalculation() {
+    const calculatorType = document.getElementById('calculatorType').value;
+    const inputValue = document.getElementById('calculatorInput').value.trim();
 
-      document.getElementById('factorialResult').innerText = `Factorial: ${result}`;
+    if (!inputValue) {
+      document.getElementById('calculatorResult').innerText = "Please enter a valid input.";
+      return;
     }
 
-    // Sum and average function
-    function calculateSumAndAverage() {
-      const input = document.getElementById('sumAverageInput').value;
-      const numbers = input.split(',').map(Number);
-      if (numbers.some(isNaN)) {
-        alert('Please enter valid numbers separated by commas.');
-        return;
-      }
+    if (calculatorType === 'factorial') {
+      calculateFactorial(inputValue);
+    } else if (calculatorType === 'sumAverage') {
+      calculateSumAndAverage(inputValue);
+    } else {
+      document.getElementById('calculatorResult').innerText = "Please select a valid calculator option.";
+    }
+  }
 
-      const sum = numbers.reduce((acc, num) => acc + num, 0);
-      const average = sum / numbers.length;
+  function calculateFactorial(inputValue) {
+    const number = parseInt(inputValue);
 
-      document.getElementById('sumAverageResult').innerText = `Sum: ${sum}, Average: ${average.toFixed(2)}`;
+    if (isNaN(number) || number <= 0) {
+      document.getElementById('calculatorResult').innerText = "Please enter a valid positive integer for factorial.";
+      return;
     }
 
+    let result = 1;
+    for (let i = 1; i <= number; i++) {
+      result *= i;
+    }
+
+    document.getElementById('calculatorResult').innerText = `Factorial of ${number} is: ${result}`;
+  }
+
+  function calculateSumAndAverage(inputValue) {
+    const numbers = inputValue.split(',').map(num => parseFloat(num.trim()));
+
+    if (numbers.some(isNaN)) {
+      document.getElementById('calculatorResult').innerText = "Please enter valid numbers separated by commas.";
+      return;
+    }
+
+    const sum = numbers.reduce((acc, num) => acc + num, 0);
+    const average = sum / numbers.length;
+
+    document.getElementById('calculatorResult').innerText = `Sum: ${sum}, Average: ${average.toFixed(2)}`;
+  }
     // Income tax calculator
     function calculateIncomeTax() {
       const income = parseFloat(document.getElementById('incomeTaxInput').value);
@@ -374,12 +397,15 @@
         document.getElementById('incomeTaxResult').innerText = `Tax: ₱${tax.toFixed(2)}`;
 }
 
-    function addEmployee() {
+// Function to add an employee to the payroll table
+function addEmployee() {
+  // Get input values
   const name = document.getElementById('employeeName').value.trim();
   const daysWorked = parseInt(document.getElementById('daysWorked').value);
   const dailyRate = parseFloat(document.getElementById('dailyRate').value);
   const deductionAmount = parseFloat(document.getElementById('deductionAmount').value);
 
+  // Validate input values
   if (!name || isNaN(daysWorked) || isNaN(dailyRate) || isNaN(deductionAmount) || daysWorked <= 0 || dailyRate <= 0) {
     alert('Please fill out all fields with valid values');
     return;
@@ -408,9 +434,9 @@
   const removeButton = document.createElement('button');
   removeButton.textContent = 'Remove';
   removeButton.classList.add('w3-button', 'w3-red');
-  removeButton.onclick = function() {
-    tableBody.deleteRow(row.rowIndex - 1);
-    updateRowNumbers();
+  removeButton.onclick = function () {
+    tableBody.deleteRow(row.rowIndex - 1); // Remove the row
+    updateRowNumbers(); // Update row numbers after removal
   };
   removeCell.appendChild(removeButton);
 
@@ -421,14 +447,25 @@
   document.getElementById('deductionAmount').value = '';
 }
 
-// Function to update row numbers after removal
+// Function to update row numbers after removal of a row
 function updateRowNumbers() {
   const tableBody = document.getElementById('payrollTableBody');
   for (let i = 0; i < tableBody.rows.length; i++) {
-    tableBody.rows[i].cells[0].innerText = i + 1; // Update "No." column
+    tableBody.rows[i].cells[0].innerText = i + 1; // Update the "No." column
   }
 }
 
-  </script>
+// Back button functionality
+function goBack() {
+  // Hide all feature details
+  document.querySelectorAll('.feature-details').forEach(section => {
+    section.style.display = 'none';
+  });
+
+  // Show the feature container
+  document.getElementById('featureContainer').style.display = 'grid';
+}
+</script>
+
 </body>
 </html>
